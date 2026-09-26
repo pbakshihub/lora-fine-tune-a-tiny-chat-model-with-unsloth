@@ -100,8 +100,34 @@ def trainable_fraction(trainable_count, total_count):
     return trainable_count/total_count
     pass
 
-# Step 9 - build_instruction_examples (not yet solved)
-# TODO: implement
+# Step 9 - build_instruction_examples
+def build_instruction_examples():
+    """Return a small list of {'instruction', 'response'} dicts for SFT."""
+    # TODO: return a tiny hand-written list of instruction/response example dicts.
+    return [
+        {
+            "instruction": "Summarize the key benefit of low-rank adaptation (LoRA) in one sentence.",
+            "response": "LoRA drastically reduces fine-tuning memory requirements by freezing the base model weights and training only small, rank-decomposition matrices."
+        },
+        {
+            "instruction": "Write a Python function to check if a word is a palindrome.",
+            "response": "def is_palindrome(word: str) -> bool:\n    cleaned = word.lower()\n    return cleaned == cleaned[::-1]"
+        },
+        {
+            "instruction": "Explain the difference between a scalar and a vector in physics.",
+            "response": "A scalar quantity has only magnitude (such as temperature or mass), whereas a vector quantity has both magnitude and direction (such as velocity or force)."
+        },
+        {
+            "instruction": "Convert the temperature 25 degrees Celsius to Fahrenheit.",
+            "response": "To convert Celsius to Fahrenheit, multiply by 1.8 and add 32. Thus, 25°C equals 77°F."
+        },
+        {
+            "instruction": "square the number n",
+            "response": "Square of a number n is n multiplied by n"
+        }
+    ]
+    
+    pass
 
 # Step 10 - format_instruction_example (not yet solved)
 # TODO: implement

@@ -213,12 +213,23 @@ def build_sft_trainer(model, tokenizer, dataset, training_args, max_seq_length=2
     pass
 
 # Step 17 - run_sft_training
+from trl import SFTTrainer
+
 def run_sft_training(trainer):
     """Run a few SFT steps and return the final training loss as a float."""
     # TODO: drive the trainer through its short optimization run and return the final loss
-    train_result = trainer.train()
-    metrics = train_result.metrics()
+    if callable(getattr(trainer, "train", None)):
+        train_result = trainer.train()
+    else:
+        # Fall back to explicit class method execution
+        train_result = SFTTrainer.train(trainer)
+
+    # Extract metrics dict
+    metrics = getattr(train_result, "metrics", {})
+    
+    # Grab loss value
     final_loss = metrics.get("train_loss", float("nan"))
+
     return float(final_loss)
     pass
 

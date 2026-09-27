@@ -241,8 +241,23 @@ def switch_to_inference_mode(model):
     return model
     pass
 
-# Step 19 - build_chat_prompt (not yet solved)
-# TODO: implement
+# Step 19 - build_chat_prompt
+def build_chat_prompt(tokenizer, instruction):
+    """Return a chat-template prompt string ready for assistant generation."""
+    # TODO: wrap the instruction as a user turn and produce the assistant-generation prompt string
+    messages = [
+        {"role": "user", "content": instruction}
+    ]
+    
+    formatted_prompt = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
+    
+    return formatted_prompt
+    
+    pass
 
 # Step 20 - generate_reply (not yet solved)
 # TODO: implement
